@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title></title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each="domain : ${domains}">
+        <td th:text="${domain.id}"></td>
+        <td th:text="${domain.name}"></td>
+        <td><a th:href="${'/updateDomain/' + domain.id}">Update</a></td>
+        <td><a th:href="${'/deleteDomain/' + domain.id}">Delete</a></td>
+    </tr>
+</table>
+
+<form th:object="${domain}" action="saveDomain" method="post">
+    <input th:field="*{name}" placeholder="name"/>
+    <button>save product</button>
+</form>
+
+
+</body>
+</html>
